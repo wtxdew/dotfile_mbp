@@ -1,0 +1,30 @@
+{
+	"title": "Map fn + Left Control to CapsLock keys (TwU)",
+	"rules": [
+		{
+			"description": "Map fn + Left Control to CapsLock keys (TwU)",
+			"manipulators": [
+        {
+            "from": {
+                "key_code": "left_control",
+                "modifiers": {
+                    "mandatory": [
+                        "fn"
+                    ],
+                    "optional": [
+                        "any"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "caps_lock"
+                }
+            ],
+            "type": "basic"
+        },
+        {}
+			]
+		}
+	]
+}

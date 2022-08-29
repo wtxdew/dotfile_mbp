@@ -1,0 +1,69 @@
+#!/bin/bash
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+
+yabai -m config external_bar                 all:0:25
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          off
+yabai -m config window_border                on
+yabai -m config window_border_width          5
+yabai -m config active_window_border_color   0xffff0000 #6fa8dc #775759 
+yabai -m config normal_window_border_color   0xff555555
+yabai -m config insert_feedback_color        0xaad75f5f
+yabai -m config split_ratio                  0.50
+
+yabai -m config window_opacity               off
+yabai -m config normal_window_opacity        0.85
+yabai -m config active_window_opacity        0.98
+
+# Mouse settings
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config mouse_drop_action            swap
+
+yabai -m config layout                       bsp
+# padding
+yabai -m config top_padding                  20
+yabai -m config bottom_padding               18
+yabai -m config left_padding                 20
+yabai -m config right_padding                20
+yabai -m config window_gap                   12
+
+
+## Space rules
+yabai -m rule --add app="^郵件$"      space=3
+
+## Opacity rules
+# yabai -m rule --add app="^Alacritty$" opacity=0.98
+# yabai -m rule --add app="^音樂$"      opacity=0.95
+
+## manage rules
+yabai -m rule --add app="^郵件$" title!="收件匣" manage=off
+yabai -m rule --add app="^MonitorControl" manage=off
+yabai -m rule --add app="^Karabiner"      manage=off 
+yabai -m rule --add app="^系統偏好設定$"  manage=off 
+yabai -m rule --add app="^鑰匙圈存取$"    manage=off 
+yabai -m rule --add title="^拷貝$"        manage=off
+yabai -m rule --add title="Preferences$"  manage=off
+yabai -m rule --add title="偏好設定$"     manage=off
+yabai -m rule --add title="迷你播放器$"   manage=off
+yabai -m rule --add title="^Welcome to Xcode$" border=off
+
+# # Signal events 
+# ## yabai-indicator Evnet
+yabai -m signal --add event=mission_control_exit  action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_added         action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_removed       action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=space_changed         action='echo "refresh spaces" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_created        action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_destroyed      action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_focused        action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_moved          action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_resized        action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_minimized      action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_deminimized    action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+# ## xbar Event
+yabai -m signal --add event=space_changed active=yes action='open xbar://app.xbarapp.com/refreshAllPlugins && yabai -m window --focus first"'
+#

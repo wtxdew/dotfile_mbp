@@ -1,0 +1,154 @@
+{
+    "title": "Yabai shortcut",
+    "rules": [
+        {
+            "description": "CMD-Enter: open alacritty",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "mandatory": [
+                                "command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -n /Applications/Alacritty.app"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Refresh yabai",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "q",
+                        "modifiers": {
+                            "mandatory": ["option", "shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "bash -c 'launchctl kickstart -k gui/$UID/homebrew.mxcl.yabai'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Switch yabai layout (bsp/float/stack)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "spacebar",
+                        "modifiers": {
+                            "mandatory": ["option"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "~/.local/mybin/toggle_yabai_layout && ~/.local/mybin/refresh_xbar"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "iTerm style resize window",
+            "manipulators":[
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_arrow",
+                        "modifiers": {
+                            "mandatory": ["command","control"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "/opt/homebrew/bin/yabai -m window east --resize left:-20:0 || /opt/homebrew/bin/yabai -m window --resize left:-20:0"
+                        }
+                    ],
+                    "description": "Resize window to the left by 20 pixels"
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_arrow",
+                        "modifiers": {
+                            "mandatory": ["command","control"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "/opt/homebrew/bin/yabai -m window east --resize left:20:0 || /opt/homebrew/bin/yabai -m window --resize left:20:0"
+                        }
+                    ],
+                    "description": "Resize window to the right by 20 pixels"
+                }
+            ]
+        },
+        {
+            "description": "dwm style focus window",
+            "manipulators":[
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": ["option"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "$HOME/.local/mybin/focus_yabai_target next"
+                        }
+                    ],
+                    "description": "Focus next window"
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "mandatory": ["option"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "$HOME/.local/mybin/focus_yabai_target prev"
+                        }
+                    ],
+                    "description": "Focus prev window"
+                }
+            ]
+        },
+        {
+            "description": "",
+            "manipulators":[
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "",
+                        "modifiers": {
+                            "mandatory": [""]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": ""
+                        }
+                    ],
+                    "description": ""
+                }
+            ]
+        }
+    ]
+}

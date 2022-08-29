@@ -1,0 +1,32 @@
+{
+  "title": "f14 to change Karabiner profile",
+  "rules": [
+    {
+      "description": "Change Karabiner profile (f13: Default, f14: FF14)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f14"
+          },
+          "to": [
+            {
+              "shell_command": "'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile 'FF14'"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "f13"
+          },
+          "to": [
+            {
+              "shell_command": "'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile 'Default'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
